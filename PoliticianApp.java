@@ -13,6 +13,11 @@ import javax.swing.text.DateFormatter;
 
 public class PoliticianApp {
     public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-YYYY hh:mm a");
+            System.out.println(now.format(formatter));
+            System.out.println();
+
         System.out.println(" ______");
         System.out.println("|     |        |");
         System.out.println("|     |        |");
@@ -20,25 +25,23 @@ public class PoliticianApp {
         System.out.println("|              |    |   _|_   _|_   ____    |    ____   |    |");
         System.out.println("|       (   )  |    |    |     |    |       |   |    |  |    |");
         System.out.println("|       (   )  |    |_   |/    |_   |___    |_  |____|  |    |");
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-YYYY hh:mm a");
-            System.out.println(now.format(formatter));
-            //Welcome to Politician. It is an app that is designed to pick/discover your own politicians.
+        System.out.println();
+        
             System.out.println("Welcome to Politician."  + 
-            "This app is designed to pick/discover your own politicians by inputting attributes." +  
+            "This app is designed to pick/discover your own politicians by inputting attributes of a politician of your choice." +  
             "You can search up anything about the politician if necessary.");
-            //Ask the user for name using scanner for user input. Say hello name!
+
             Scanner userInput = new Scanner(System.in);
             System.out.print("What is your name: ");
             String usersName = userInput.next();
-            while(!(usersName.length() > 1) || (isValidName(usersName) == false)){
+            while(!(usersName.length() > 1) || (isValidName(usersName) == false) || (!isCapital(usersName))){
                 System.out.println("Invalid input. Enter another name.");
                 usersName = userInput.next();
             }
 
             System.out.println("Hello " + usersName + "!");
             System.out.println();
-            //Give a description about the app below once you entered the name.
+            
             System.out.println("In the politician app, there is various information that you can find out based on inputting the qualities of the politician." + 
             " The world may be filled with disinformation, especially throughout these troubled times. Now, I will make sure your inputs will be valid or not." + 
             " This app is to educate people about the people who serve or have served Congress and/or the White House.");
@@ -46,10 +49,10 @@ public class PoliticianApp {
             System.out.println("By the way, if you want to exit a program, just use control C on Mac." + 
             "For non mac users, just search up the command used to exit this program.");
             System.out.println();
-            //Find out how many politicians you will choose by telling the user to input a number.
+            
             System.out.println("Enter the number of politicians that you want.");
             int numberOfPoliticians = userInput.nextInt();
-            if(numberOfPoliticians > 2){
+            if(numberOfPoliticians >= 2){
                 System.out.println("You will get " + numberOfPoliticians + " politicians.");
             }else if(numberOfPoliticians == 1){
                 System.out.println("You will get " + numberOfPoliticians + " politician.");
@@ -60,7 +63,7 @@ public class PoliticianApp {
                 }
             }
             System.out.println();
-            //Create a ArrayList that has all the types of politicians(Pres,Sec,Judge,Sen,Rep)
+            
             List<String> typesOfPoliticians = new ArrayList<>();
             typesOfPoliticians.add(0, "President");
             typesOfPoliticians.add(1, "Secretary");
@@ -68,19 +71,15 @@ public class PoliticianApp {
             typesOfPoliticians.add(3, "Senator");
             typesOfPoliticians.add(4, "Representative");
             
-            //Create an array to store the politician objects.
+            
             Politician[] chosenPoliticians = new Politician[numberOfPoliticians];
 
-            //Loop through numOfPoliticans times
+            
             for(int i = 0; i < numberOfPoliticians; i++){
-                System.out.println("Enter a numbered option from(1-5): ");
-                //User another forloop to loop through the arraylist values.
-                //Create a bullet pointed list by adding the bulletpt before getting the value.
+                System.out.println("Enter a numbered for the type of the politician from(1-5): ");
                 for(int j = 0; j < typesOfPoliticians.size(); j++){
                     System.out.println((j + 1) + ": " + typesOfPoliticians.get(j));
                 }
-                //Do a try catch statement.
-                //Avoid using radixes(can be messy with try catch).
                 int type = userInput.nextInt();
                 while(!(type >= 1 && type <= 5)){
                     System.err.println("Invalid answer. Please enter a number betweeen 1-5.");
@@ -98,10 +97,25 @@ public class PoliticianApp {
                     System.out.println("Enter the president's name: ");
                     String nameOfPresident = userInput.nextLine();
 
-                    while(isValidName(nameOfPresident) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
+                    boolean isValid = false;
+
+                    while(!isValid){
+                        String[] splitPresident = nameOfPresident.split(" ");
+                        for (int j = 0; j < splitPresident.length; j++) {
+                            if(!isCapital(splitPresident[j]) || !isValidName(splitPresident[j])){
+                                isValid = false;
+                                break;
+                            }
+                            if(isCapital(splitPresident[j]) || isValidName(splitPresident[j])){
+                                isValid = true;
+                            }
+                        }
+                        if(!isValid){
+                            System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
+                            nameOfPresident = userInput.nextLine();
+                        }
                     }
+
                     System.out.println();
 
                     System.out.println("Enter the president's date of birth using MM-DD-yyyy format(Numbers only): ");
@@ -181,8 +195,9 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("White House".equals(residence)){
-                            System.out.println("Invalid current residence for a former president.");
+                        while("White House".equals(residence)){
+                            System.err.println("Invalid current residence for a former president.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
@@ -238,8 +253,7 @@ public class PoliticianApp {
                         party = userInput.nextLine();
                     }
                     System.out.println();
-                    //Create a new President and set it equal to chosenPoliticians.
-                    //Then give a short description of the president by giving it's name and going through the rest of the methods. 
+                    
                     chosenPoliticians[i] = new President(nameOfPresident, birth, residence, swornIn,
                     isOutOfOffice, billsPresident, votesPerBill, party);
                     System.out.println("You have created a " + typesOfPoliticians.get(0).toLowerCase() + 
@@ -256,12 +270,24 @@ public class PoliticianApp {
                     System.out.println("Enter the secretary's name: ");
                     String nameOfSecretary= userInput.nextLine();
 
-                    while(isValidName(nameOfSecretary) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
+                    boolean isValid = false;
+                    while(!isValid){
+                        String[] splitSecretary = nameOfSecretary.split(" ");
+                        for (int j = 0; j < splitSecretary.length; j++) {
+                            if(!isCapital(splitSecretary[j]) || !isValidName(splitSecretary[j])){
+                                isValid = false;
+                                break;
+                            }
+                            if(isCapital(splitSecretary[j]) || isValidName(splitSecretary[j])){
+                                isValid = true;
+                            }
+                        }
+                        if(!isValid){
+                            System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
+                            nameOfSecretary = userInput.nextLine();
+                        }
                     }
-                    System.out.println();
-
+                
                     System.out.println("Enter the secretary's date of birth using MM-DD-yyyy format(Numbers only): ");
                     System.out.println("January-December(1-12)");
                     System.out.println();
@@ -339,12 +365,13 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former secretary.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former secretary. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
-                        residence = "Washington D.C.";
+                        residence = "Washington, D.C.";
                     }
                     userInput.nextLine();
                     
@@ -371,8 +398,6 @@ public class PoliticianApp {
                         System.out.println("Invalid input. Please make sure you follow the directions above and make sure the input is capitalized in the beginning. Enter another type of Secretary.");
                         typeOfSecretary = userInput.nextLine();
                     }
-                    //Create a new President and set it equal to chosenPoliticians.
-                    //Then give a short description of the president by giving it's name and going through the rest of the methods. 
                     chosenPoliticians[i] = new Secretary(nameOfSecretary, birth, residence, swornIn,
                     isOutOfOffice,votesIn, party, typeOfSecretary);
                     System.out.println("You have created a " + typesOfPoliticians.get(1).toLowerCase() + 
@@ -390,9 +415,22 @@ public class PoliticianApp {
                     System.out.println("Enter the justice's name: ");
                     String nameOfJustice= userInput.nextLine();
 
-                    while(isValidName(nameOfJustice) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
+                    boolean isValid = false;
+                    while(!isValid){
+                        String[] splitJustice = nameOfJustice.split(" ");
+                        for (int j = 0; j < splitJustice.length; j++) {
+                            if(!isCapital(splitJustice[j]) || !isValidName(splitJustice[j])){
+                                isValid = false;
+                                break;
+                            }
+                            if(isCapital(splitJustice[j]) || isValidName(splitJustice[j])){
+                                isValid = true;
+                            }
+                        }
+                        if(!isValid){
+                            System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
+                            nameOfJustice = userInput.nextLine();
+                        }
                     }
                     System.out.println();
 
@@ -473,12 +511,13 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former justice.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former justice. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
-                        residence = "Washington D.C.";
+                        residence = "Washington, D.C.";
                     }
                     userInput.nextLine();
                     
@@ -499,8 +538,7 @@ public class PoliticianApp {
                     }
 
                     System.out.println();
-                    //Create a new President and set it equal to chosenPoliticians.
-                    //Then give a short description of the president by giving it's name and going through the rest of the methods. 
+                
                     chosenPoliticians[i] = new SupremeCourtJustice(nameOfJustice, birth, residence, swornIn,
                     isOutOfOffice,votesIn, party);
                     System.out.println("You have created a " + typesOfPoliticians.get(2).toLowerCase() + 
@@ -518,11 +556,23 @@ public class PoliticianApp {
                     System.out.println("Enter the senator's name: ");
                     String nameOfSenator = userInput.nextLine();
 
-                    while(isValidName(nameOfSenator) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
+                    boolean isValid = false;
+                    while(!isValid){
+                        String[] splitSenator = nameOfSenator.split(" ");
+                        for (int j = 0; j < splitSenator.length; j++) {
+                            if(!isCapital(splitSenator[j]) || !isValidName(splitSenator[j])){
+                                isValid = false;
+                                break;
+                            }
+                            if(isCapital(splitSenator[j]) || isValidName(splitSenator[j])){
+                                isValid = true;
+                            }
+                        }
+                        if(!isValid){
+                            System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
+                            nameOfSenator = userInput.nextLine();
+                        }
                     }
-                    System.out.println();
 
                     System.out.println("Enter the senator's date of birth using MM-DD-yyyy format(Numbers only): ");
                     System.out.println("January-December(1-12)");
@@ -601,17 +651,17 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former senator.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former senator. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
-                        residence = "Washington D.C.";
+                        residence = "Washington, D.C.";
                     }
 
                     userInput.nextLine();
-                    //Get user input for the state
-                    //If the state isn't valid, then tell the user it's invalid state and enter another one.
+        
                     System.out.println("Enter the state the senator represents: ");
                     String stateRepresented = userInput.nextLine();
 
@@ -648,9 +698,22 @@ public class PoliticianApp {
                     System.out.println("Enter the representative's name: ");
                     String nameOfRepresentative = userInput.nextLine();
 
-                    while(isValidName(nameOfRepresentative) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
+                    boolean isValid = false;
+                    while(!isValid){
+                        String[] splitRepresentative = nameOfRepresentative.split(" ");
+                        for (int j = 0; j < splitRepresentative.length; j++) {
+                            if(!isCapital(splitRepresentative[j]) || !isValidName(splitRepresentative[j])){
+                                isValid = false;
+                                break;
+                            }
+                            if(isCapital(splitRepresentative[j]) || isValidName(splitRepresentative[j])){
+                                isValid = true;
+                            }
+                        }
+                        if(!isValid){
+                            System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
+                            nameOfRepresentative = userInput.nextLine();
+                        }
                     }
                     System.out.println();
 
@@ -731,12 +794,13 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former representative.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former representative. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
-                        residence = "Washington D.C.";
+                        residence = "Washington, D.C.";
                     }
 
                     System.out.println();
@@ -898,10 +962,6 @@ public class PoliticianApp {
                     System.out.println("Enter the secretary's name: ");
                     String nameOfSecretary= userInput.nextLine();
 
-                    while(isValidName(nameOfSecretary) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
-                    }
                     System.out.println();
 
                     System.out.println("Enter the secretary's date of birth using MM-DD-yyyy format(Numbers only): ");
@@ -981,8 +1041,9 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former secretary.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former secretary. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
@@ -1052,10 +1113,6 @@ public class PoliticianApp {
                         System.out.println("Enter the justice's name: ");
                     String nameOfJustice= userInput.nextLine();
 
-                    while(isValidName(nameOfJustice) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
-                    }
                     System.out.println();
 
                     System.out.println("Enter the justice's date of birth using MM-DD-yyyy format(Numbers only): ");
@@ -1135,8 +1192,9 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former justice.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former justice. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
@@ -1221,10 +1279,6 @@ public class PoliticianApp {
                     System.out.println("Enter the secretary's name: ");
                     String nameOfSecretary= userInput.nextLine();
 
-                    while(isValidName(nameOfSecretary) == false){
-                        System.err.println("Invalid name. Please enter another name.");
-                        userInput.nextLine();
-                    }
                     System.out.println();
 
                     System.out.println("Enter the secretary's date of birth using MM-DD-yyyy format(Numbers only): ");
@@ -1304,8 +1358,9 @@ public class PoliticianApp {
                     boolean isOutOfOffice = false;
                     if("Yes".equals(yesOrNo)){
                         isOutOfOffice = true;
-                        if("Washington D.C.".equals(residence)){
-                            System.out.println("Invalid current residence for a former secretary.");
+                        while("Washington, D.C.".equals(residence)){
+                            System.err.println("Invalid current residence for a former secretary. Please enter another residence.");
+                            residence = userInput.nextLine();
                         }
                     } else{
                         isOutOfOffice = false;
@@ -1340,12 +1395,7 @@ public class PoliticianApp {
                     isOutOfOffice,votesIn, party, typeOfSecretary));         
                   }
                   System.out.println();
-                    //Secretary Meeting
-                        //Get a list of secretaries(copying the secretaries above).
-                        //For each secretary, ask the user to enter a condition.
-                            //Display a list of options to choose from(Tell them to copy paste!)
-                            //If user doesn't do that, then I can tell the user to enter another time. 
-                            //Once the user follows directions, then I can just call the method. 
+                  
                     System.out.println(newPoliticians[g].getRepresentative().getName() + " had a meeting with each secretary about some important matters.");
                     System.out.println();
 
@@ -1515,6 +1565,11 @@ public class PoliticianApp {
             }
         
         }
+        //Create a method that takes in a str and checks whether the first character is uppercase.
+        public static boolean isCapital(String name){
+            return Character.isUpperCase(name.charAt(0));
+        }
+
         public static boolean isValidName(String name){
             boolean isValid = true;
             for (int i = 0; i < name.length(); i++) {

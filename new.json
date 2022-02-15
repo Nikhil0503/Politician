@@ -1,0 +1,177 @@
+{
+    "Alabama":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th"
+    ],
+    "Alaska":[
+        "At large"
+    ],
+    "Arizona": [
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"
+    ],
+    "Arkansas": [
+        "1st", "2nd", "3rd", "4th"
+    ],
+    "California":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th",
+    "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", 
+    "26th", "27th", "28th", "29th", "30th", "31st", "32nd", "33rd", "34th", "35th", 
+    "36th", "37th", "38th", "39th", "40th", "41st", "42nd", "43rd", "44th", "45th", 
+    "46th", "47th", "48th", "49th", "50th", "51st", "52nd", "53rd"
+    ],
+    "Colorado":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th"
+    ], 
+    "Connecticut":[
+        "1st", "2nd", "3rd", "4th", "5th"
+    ],
+    "Delaware":[
+        "At large"
+    ],
+    "District of Columbia":[
+        "At large"
+    ],
+    "Florida": [
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", 
+    "11th", "12th", "13th","14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", 
+    "23rd", "24th", "25th", "26th", "27th"
+    ], 
+    "Georgia": [
+        "1st", "2nd", "3rd", "4th", "5th", 
+    "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th"
+    ], 
+    "Hawaii": [
+        "1st", "2nd"
+    ],
+    "Idaho": [
+        "1st", "2nd"
+    ],
+    "Illinois": [
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", 
+    "10th", "11th", "12th", "13th","14th", "15th", "16th", "17th", "18th"
+    ], 
+    "Indiana": [
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", 
+    "8th", "9th"
+    ],
+    "Iowa":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", 
+    "7th", "8th", "9th"
+    ],
+    "Kansas":[
+        "1st", "2nd", "3rd", "4th"
+    ],
+    "Kentucky":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th"
+    ],
+    "Louisiana":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th"
+    ],
+    "Maine":[
+        "1st", "2nd"
+    ],
+    "Maryland":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"
+    ],
+    "Massachusetts":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"
+    ],
+    "Michigan":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", 
+    "10th", "11th", "12th", "13th", "14th"
+    ],
+    "Minnesota":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"
+    ],
+    "Mississippi":[
+        "1st", "2nd", "3rd", "4th"
+    ],
+    "Missouri":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"
+    ],
+    "Montana":[
+        "At large"
+    ],
+    "Nebraska":[
+        "1st", "2nd", "3rd"
+    ],
+    "Nevada":[
+        "1st", "2nd", "3rd"
+    ],
+    "New Hamphshire":[
+        "1st", "2nd"
+    ],
+    "New Jersey":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", 
+    "10th", "11th", "12th"
+    ],
+    "New Mexico":[
+        "1st", "2nd", "3rd"
+    ],
+    "New York":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th",
+    "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", 
+    "26th", "27th"
+    ],
+    "North Carolina":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th"
+    ],
+    "North Dakota":[
+        "At large"
+    ],
+    "Ohio":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th",
+    "14th", "15th", "16th"
+    ],
+    "Oklahoma":[
+        "1st", "2nd", "3rd", "4th", "5th"
+    ],
+    "Oregon":[
+        "1st", "2nd", "3rd", "4th", "5th"
+    ],
+    "Pennsylvania":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th",
+    "14th", "15th", "16th", "17th", "18th"
+    ],
+    "Puerto Rico":[
+        "At large"
+    ],
+    "Rhode Island":[
+        "1st", "2nd"
+    ],
+    "South Carolina":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th"
+    ],
+    "South Dakota":[
+        "At large"
+    ],
+    "Tennessee":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"
+    ],
+    "Texas":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th",
+    "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", 
+    "26th", "27th", "28th", "29th", "30th", "31st", "32nd", "33rd", "34th", "35th", 
+    "36th"
+    ],
+    "Utah":[
+        "1st", "2nd", "3rd", "4th"
+    ],
+    "Vermont":[
+        "At large"
+    ],
+    "Virginia":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th"
+    ],
+    "Washington":[
+        "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"
+    ],
+    "West Virginia":[
+        "1st", "2nd", "3rd"
+    ],
+    "Wisconsin":[
+        "1st", "2nd", "3rd"
+    ],
+    "Wyoming":[
+        "At large"
+    ]
+}

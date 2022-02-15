@@ -1,0 +1,12 @@
+{
+    "name": "Nikhil",
+    "age": 18,
+    "csMajor": true,
+    "courses": ["DS, Linear, Expos, ImmigrantSociety, AfricanImmiLit, Byrne"],
+    "anotherFriend":{
+        "name": "Nikhil",
+        "age": 18,
+        "csMajor": true,
+        "courses": ["DS, Calc 2, Gen Phys 1, Gen Psych, HistLabor"]
+    }
+}

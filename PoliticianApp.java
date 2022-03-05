@@ -74,7 +74,6 @@ public class PoliticianApp {
             
             Politician[] chosenPoliticians = new Politician[numberOfPoliticians];
 
-            
             for(int i = 0; i < numberOfPoliticians; i++){
                 System.out.println("Enter a numbered for the type of the politician from(1-5): ");
                 for(int j = 0; j < typesOfPoliticians.size(); j++){
@@ -99,7 +98,7 @@ public class PoliticianApp {
 
                     boolean isValid = false;
 
-                    while(!isValid){
+                    while(isValid){
                         String[] splitPresident = nameOfPresident.split(" ");
                         for (int j = 0; j < splitPresident.length; j++) {
                             if(!isCapital(splitPresident[j]) || !isValidName(splitPresident[j])){
@@ -110,7 +109,7 @@ public class PoliticianApp {
                                 isValid = true;
                             }
                         }
-                        if(!isValid){
+                        if(isValid){
                             System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
                             nameOfPresident = userInput.nextLine();
                         }
@@ -271,7 +270,7 @@ public class PoliticianApp {
                     String nameOfSecretary= userInput.nextLine();
 
                     boolean isValid = false;
-                    while(!isValid){
+                    while(isValid){
                         String[] splitSecretary = nameOfSecretary.split(" ");
                         for (int j = 0; j < splitSecretary.length; j++) {
                             if(!isCapital(splitSecretary[j]) || !isValidName(splitSecretary[j])){
@@ -282,7 +281,7 @@ public class PoliticianApp {
                                 isValid = true;
                             }
                         }
-                        if(!isValid){
+                        if(isValid){
                             System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
                             nameOfSecretary = userInput.nextLine();
                         }
@@ -416,7 +415,7 @@ public class PoliticianApp {
                     String nameOfJustice= userInput.nextLine();
 
                     boolean isValid = false;
-                    while(!isValid){
+                    while(isValid){
                         String[] splitJustice = nameOfJustice.split(" ");
                         for (int j = 0; j < splitJustice.length; j++) {
                             if(!isCapital(splitJustice[j]) || !isValidName(splitJustice[j])){
@@ -427,7 +426,7 @@ public class PoliticianApp {
                                 isValid = true;
                             }
                         }
-                        if(!isValid){
+                        if(isValid){
                             System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
                             nameOfJustice = userInput.nextLine();
                         }
@@ -557,7 +556,7 @@ public class PoliticianApp {
                     String nameOfSenator = userInput.nextLine();
 
                     boolean isValid = false;
-                    while(!isValid){
+                    while(isValid){
                         String[] splitSenator = nameOfSenator.split(" ");
                         for (int j = 0; j < splitSenator.length; j++) {
                             if(!isCapital(splitSenator[j]) || !isValidName(splitSenator[j])){
@@ -568,7 +567,7 @@ public class PoliticianApp {
                                 isValid = true;
                             }
                         }
-                        if(!isValid){
+                        if(isValid){
                             System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
                             nameOfSenator = userInput.nextLine();
                         }
@@ -699,7 +698,7 @@ public class PoliticianApp {
                     String nameOfRepresentative = userInput.nextLine();
 
                     boolean isValid = false;
-                    while(!isValid){
+                    while(isValid){
                         String[] splitRepresentative = nameOfRepresentative.split(" ");
                         for (int j = 0; j < splitRepresentative.length; j++) {
                             if(!isCapital(splitRepresentative[j]) || !isValidName(splitRepresentative[j])){
@@ -710,7 +709,7 @@ public class PoliticianApp {
                                 isValid = true;
                             }
                         }
-                        if(!isValid){
+                        if(isValid){
                             System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
                             nameOfRepresentative = userInput.nextLine();
                         }

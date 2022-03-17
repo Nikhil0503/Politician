@@ -51,16 +51,23 @@ public class PoliticianApp {
             System.out.println();
             
             System.out.println("Enter the number of politicians that you want.");
-            int numberOfPoliticians = userInput.nextInt();
-            if(numberOfPoliticians >= 2){
-                System.out.println("You will get " + numberOfPoliticians + " politicians.");
-            }else if(numberOfPoliticians == 1){
-                System.out.println("You will get " + numberOfPoliticians + " politician.");
-            } else{
-                while (numberOfPoliticians <= 0) {
-                    System.out.println("Invalid number. Enter a different number.");
-                    numberOfPoliticians = userInput.nextInt();
+            userInput.nextLine();
+            int numberOfPoliticians = 0;
+            try {
+                int userNumberOfPoliticians = userInput.nextInt();
+                if(userNumberOfPoliticians >= 2){
+                    System.out.println("You will get " + userNumberOfPoliticians + " politicians.");
+                }else if(userNumberOfPoliticians == 1){
+                    System.out.println("You will get " + userNumberOfPoliticians + " politician.");
+                } else{
+                    while (userNumberOfPoliticians <= 0) {
+                        System.out.println("Invalid number. Enter a different number.");
+                        userNumberOfPoliticians = userInput.nextInt();
+                    }
                 }
+                numberOfPoliticians = userNumberOfPoliticians;
+            } catch (Exception e) {
+                //TODO: handle exception
             }
             System.out.println();
             
@@ -98,7 +105,7 @@ public class PoliticianApp {
 
                     boolean isValid = false;
 
-                    while(isValid){
+                    while(isValid == false){
                         String[] splitPresident = nameOfPresident.split(" ");
                         for (int j = 0; j < splitPresident.length; j++) {
                             if(!isCapital(splitPresident[j]) || !isValidName(splitPresident[j])){
@@ -109,7 +116,7 @@ public class PoliticianApp {
                                 isValid = true;
                             }
                         }
-                        if(isValid){
+                        if(isValid == false){
                             System.err.println("Invalid name. Each word of the name must be capitalized or must not contain any extraneous characters.");
                             nameOfPresident = userInput.nextLine();
                         }
